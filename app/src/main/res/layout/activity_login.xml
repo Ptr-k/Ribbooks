@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/design_default_color_secondary_variant"
+    android:padding="16dp">
+
+    <ImageView
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo" />
+    <EditText
+        android:id="@+id/email_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:hint="Email"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="20sp"
+        android:background="@drawable/rounded_corner"
+        android:padding="18dp"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/password_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Password"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="20sp"
+        android:background="@drawable/rounded_corner"
+        android:padding="18dp"
+        android:inputType="textPassword" />
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:backgroundTint="@color/white"
+        android:textSize="20dp"
+        android:padding="18dp"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/black" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Social Login"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="32dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/facebook_btn"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/facebook" />
+        <ImageView
+            android:id="@+id/likedin_btn"
+            android:layout_width="73dp"
+            android:layout_height="85dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/likedin" />
+    </LinearLayout>
+</LinearLayout>
