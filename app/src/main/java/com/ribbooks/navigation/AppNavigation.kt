@@ -6,6 +6,7 @@ import androidx.navigation.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
+import com.ribbooks.auth.LoginScreen
 
 sealed class Screen(val route: String) {
     object Home : Screen("home")
@@ -22,8 +23,11 @@ fun AppNavigation(auth: FirebaseAuth, database:DatabaseReference) {
         // te lleva a la pantalla de login si no hay usuario loggeado.
         startDestination = if(auth.currentUser  != null) Screen.Home.route else Screen.Login.route
     ) {
+        composable(Screen.Login.route) {
+            LoginScreen(auth, navController)
+        }
         composable(Screen.Home.route) {
-            HomeScreen(navController,auth)
+            HomeScreen(auth, navController)
         }
     }
 }

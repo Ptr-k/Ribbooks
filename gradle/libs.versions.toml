@@ -1,6 +1,7 @@
 [versions]
 agp = "8.13.1"
 googleFirebaseBom = "34.6.0"
+googleFirebaseBomVersion = "34.5.0"
 kotlin = "2.0.21"
 coreKtx = "1.17.0"
 junit = "4.13.2"
@@ -19,10 +20,16 @@ firebaseBomVersion = "34.5.0"
 navigationRuntimeKtx = "2.9.6"
 firebaseDatabaseKtx = "22.0.1"
 navigationCompose = "2.9.6"
+firebasePerfKtx = "22.0.4"
+material3Lint = "1.4.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+com-google-firebase-firebase-auth = { module = "com.google.firebase:firebase-auth" }
+com-google-firebase-firebase-firestore = { module = "com.google.firebase:firebase-firestore" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+firebase-bom-v3450 = { module = "com.google.firebase:firebase-bom", version.ref = "googleFirebaseBomVersion" }
+firebase-database = { module = "com.google.firebase:firebase-database" }
 google-firebase-auth = { module = "com.google.firebase:firebase-auth" }
 google-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "googleFirebaseBom" }
 google-firebase-firestore = { module = "com.google.firebase:firebase-firestore" }
@@ -49,6 +56,8 @@ xplatform_com-firebase-bom = { group = "(platform(", name = "firebase-bom", vers
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
 firebase-database-ktx = { group = "com.google.firebase", name = "firebase-database-ktx", version.ref = "firebaseDatabaseKtx" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+firebase-perf-ktx = { group = "com.google.firebase", name = "firebase-perf-ktx", version.ref = "firebasePerfKtx" }
+androidx-compose-material3-lint = { group = "androidx.compose.material3", name = "material3-lint", version.ref = "material3Lint" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

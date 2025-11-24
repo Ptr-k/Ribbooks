@@ -1,5 +1,6 @@
 package com.ribbooks.auth
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -24,6 +26,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.ribbooks.R
+import com.ribbooks.navigation.Screen
 
 @Composable
 fun LoginScreen(auth: FirebaseAuth, navController: NavController) {
@@ -52,6 +55,7 @@ fun LoginScreen(auth: FirebaseAuth, navController: NavController) {
                 label = { Text("Email") },
                 modifier = Modifier.fillMaxWidth()
             )
+
             Spacer(modifier = Modifier.height(5.dp))
 
             TextField(
@@ -59,9 +63,27 @@ fun LoginScreen(auth: FirebaseAuth, navController: NavController) {
                 onValueChange = { password = it },
                 label = { Text("Password") },
                 modifier = Modifier.fillMaxWidth(),
-                visualTranfomation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation()
-            )
+                visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                )
+
             Spacer(modifier = Modifier.height(10.dp))
+
+            Button(
+                onClick = {
+                    if(email.isBlank() || password.isBlank()) {
+                        Toast.makeText(context, "Ningún campo puede estar vacio", Toast.LENGTH_SHORT).show()
+                        return@Button
+                    }
+                    auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                        task -> navController.navigate(Screen.login.route) {
+                            popUpTo(Screen.login.route) {
+                                inclusive = true
+                            }
+                    }
+                    }
+                }
+
+            ) { }
         }
     }
 

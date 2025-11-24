@@ -45,38 +45,40 @@ android {
 }
 
 dependencies {
-    // Import the Firebase BoM
-    implementation(platform(libs.google.firebase.bom))
+    // 1. Importar el BoM de Firebase (Bill of Materials)
+    // Esto gestiona las versiones de TODAS las librerías de Firebase para asegurar la compatibilidad.
+    implementation(platform(libs.firebase.bom.v3450))
 
-    // TODO: Add the dependencies for Firebase products you want to use
-    // When using the BoM, don't specify versions in Firebase dependencies
+    // 2. Añadir las dependencias de Firebase que necesitas SIN especificar versiones y SIN el sufijo "-ktx"
     implementation(libs.firebase.analytics)
-    implementation(libs.google.firebase.auth)
-    implementation(libs.google.firebase.firestore)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.database)
+    implementation(libs.firebase.storage)
 
+    // 3. Dependencias de AndroidX Core y Jetpack Compose
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.appcompat) // Necesario si usas temas de AppCompat o vistas antiguas
+
+    // Importar el BoM de Compose para gestionar las versiones de las librerías de Compose
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.firebase.auth.ktx)
-    implementation(libs.firebase.bom)
-    implementation(libs.firebase.auth)
-    implementation(libs.firebase.firestore)
-    implementation(libs.firebase.storage)
-    implementation(libs.xplatform.com.firebase.bom)
-    implementation(libs.androidx.navigation.runtime.ktx)
-    implementation(libs.firebase.database.ktx)
-    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.compose.material3.lint)
+
+    // 4. Dependencias de Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(platform(libs.androidx.compose.bom)) // También para tests de UI
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+
+    // 5. Dependencias de Debug
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 }

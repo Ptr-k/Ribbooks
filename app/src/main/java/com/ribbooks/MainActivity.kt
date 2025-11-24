@@ -4,16 +4,31 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.perf.session.SessionManager
 import com.ribbooks.auth.LoginScreen
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val login : Button = findViewById(R.id.login)
-        login.setOnClickListener {
-            startActivity(Intent(this, LoginScreen::class.java))
+        auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance("https://ribbooks-default-rtdb.europe-west1.firebasedatabase.app/").reference
+
+        if (!SessionManager.getKeepLoggedIn(this)) {
+            auth.signOut()
+        }
+
+        setContent{
+
         }
     }
 }
