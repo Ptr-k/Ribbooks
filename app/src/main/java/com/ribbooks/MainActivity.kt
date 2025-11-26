@@ -1,15 +1,11 @@
 package com.ribbooks
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.perf.session.SessionManager
-import com.ribbooks.auth.LoginScreen
 import com.ribbooks.navigation.AppNavigation
 import com.ribbooks.ui.theme.RibbooksTheme
 

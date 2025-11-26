@@ -4,12 +4,14 @@ import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -44,7 +46,7 @@ fun LoginScreen(auth: FirebaseAuth, navController: NavController) {
     ) {
         Image(
             painter = painterResource(id = R.drawable.logo),
-            contentDescription = "Logo of Ribbooks",
+            contentDescription = "Logo de Ribbooks",
             modifier = Modifier.fillMaxSize(0.5f)
         )
         Column(
@@ -113,6 +115,16 @@ fun LoginScreen(auth: FirebaseAuth, navController: NavController) {
                     }
                 }, modifier = Modifier.fillMaxWidth()
             ) { Text("Loggin") }
+            Row {
+                Text("No tienes una cuenta?")
+                Spacer(modifier = Modifier.height(2.dp))
+                TextButton(onClick = {
+                    // al pulsar el botón, te lleva a la pantalla de registrar
+                    navController.navigate(Screen.Register.route)
+                }) {
+                    Text("Registrate")
+                }
+            }
         }
     }
 
