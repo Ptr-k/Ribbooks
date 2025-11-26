@@ -10,6 +10,8 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.perf.session.SessionManager
 import com.ribbooks.auth.LoginScreen
+import com.ribbooks.navigation.AppNavigation
+import com.ribbooks.ui.theme.RibbooksTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -28,7 +30,9 @@ class MainActivity : ComponentActivity() {
         }
 
         setContent{
-
+            RibbooksTheme {
+                AppNavigation(auth, database)
+            }
         }
     }
 }

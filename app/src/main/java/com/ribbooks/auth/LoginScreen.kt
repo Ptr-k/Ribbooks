@@ -25,8 +25,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import com.google.firebase.auth.FirebaseAuthException
 import com.ribbooks.R
 import com.ribbooks.navigation.Screen
+import com.ribbooks.auth.LoginScreen
 
 @Composable
 fun LoginScreen(auth: FirebaseAuth, navController: NavController) {
@@ -64,26 +66,53 @@ fun LoginScreen(auth: FirebaseAuth, navController: NavController) {
                 label = { Text("Password") },
                 modifier = Modifier.fillMaxWidth(),
                 visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
-                )
+            )
 
             Spacer(modifier = Modifier.height(10.dp))
 
             Button(
                 onClick = {
-                    if(email.isBlank() || password.isBlank()) {
-                        Toast.makeText(context, "Ningún campo puede estar vacio", Toast.LENGTH_SHORT).show()
+                    if (email.isBlank() || password.isBlank()) {
+                        Toast.makeText(
+                            context,
+                            "Ningún campo puede estar vacio",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         return@Button
                     }
-                    auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-                        task -> navController.navigate(Screen.login.route) {
-                            popUpTo(Screen.login.route) {
-                                inclusive = true
+                    auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            navController.navigate(Screen.Login.route) {
+                                popUpTo(Screen.Login.route) { inclusive = true }
                             }
+                        } else {
+                            val exception = task.exception
+                            when {
+                                exception is FirebaseAuthException -> {
+                                    when (exception.errorCode) {
+                                        // para el error de email incorrecto
+                                        "ERROR_INVALID_EMAIL" -> {
+                                            Toast.makeText(
+                                                context,
+                                                "El email no es válido",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        }
+                                        // para el error de contraseña incorrecta
+                                        "ERROR_WRONG_PASSWORD" -> {
+                                            Toast.makeText(
+                                                context,
+                                                "Contraseña incorrecta",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
-                    }
-                }
-
-            ) { }
+                }, modifier = Modifier.fillMaxWidth()
+            ) { Text("Loggin") }
         }
     }
 
