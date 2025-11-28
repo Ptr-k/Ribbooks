@@ -70,7 +70,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material3.lint)
-    implementation(libs.firebase.perf.ktx)
+    implementation(libs.firebase.perf)
 
     // 4. Dependencias de Testing
     testImplementation(libs.junit)

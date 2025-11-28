@@ -30,6 +30,7 @@ com-google-firebase-firebase-firestore = { module = "com.google.firebase:firebas
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-bom-v3450 = { module = "com.google.firebase:firebase-bom", version.ref = "googleFirebaseBomVersion" }
 firebase-database = { module = "com.google.firebase:firebase-database" }
+firebase-perf = { module = "com.google.firebase:firebase-perf" }
 google-firebase-auth = { module = "com.google.firebase:firebase-auth" }
 google-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "googleFirebaseBom" }
 google-firebase-firestore = { module = "com.google.firebase:firebase-firestore" }

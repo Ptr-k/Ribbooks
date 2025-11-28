@@ -16,7 +16,6 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance("https://ribbooks-default-rtdb.europe-west1.firebasedatabase.app/").reference

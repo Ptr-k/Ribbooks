@@ -30,7 +30,6 @@ import androidx.compose.ui.unit.dp
 import com.google.firebase.auth.FirebaseAuthException
 import com.ribbooks.R
 import com.ribbooks.navigation.Screen
-import com.ribbooks.auth.LoginScreen
 
 @Composable
 fun LoginScreen(auth: FirebaseAuth, navController: NavController) {
@@ -122,7 +121,7 @@ fun LoginScreen(auth: FirebaseAuth, navController: NavController) {
                     // al pulsar el botón, te lleva a la pantalla de registrar
                     navController.navigate(Screen.Register.route)
                 }) {
-                    Text("Registrate")
+                    Text("Regístrate")
                 }
             }
         }
