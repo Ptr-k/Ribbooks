@@ -8,7 +8,6 @@ class MyApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        // Inicializa todos los recursos de firebase
         Firebase.initialize(this);
     }
 }
